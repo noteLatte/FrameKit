@@ -1,5 +1,6 @@
-/*! FrameKit Liquid Glass v1.0.0 | Apple-inspired Glassmorphism UI Framework */
+/*! FrameKit Liquid Glass v1.1.0 | Apple-inspired Glassmorphism UI Framework */
 /* Pure CSS & JS UI Framework - No dependencies required */
+/* GitHub: https://github.com/noteLatte/FrameKit */
 
 /* ============================================
    FRAMEKIT LIQUID GLASS - CORE STYLES
@@ -485,6 +486,44 @@ body {
     50% { transform: translateY(-10px); }
 }
 
+/* Fade out animation */
+.fk-fade-out {
+    opacity: 1;
+    animation: fk-fade-out 0.3s ease-out forwards;
+}
+
+@keyframes fk-fade-out {
+    to { opacity: 0; }
+}
+
+/* Slide out animation */
+.fk-slide-out {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fk-slide-out 0.3s ease-out forwards;
+}
+
+@keyframes fk-slide-out {
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Scale out animation */
+.fk-scale-out {
+    opacity: 1;
+    transform: scale(1);
+    animation: fk-scale-out 0.3s ease-out forwards;
+}
+
+@keyframes fk-scale-out {
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
 /* ============================================
    UTILITIES
    ============================================ */
@@ -495,6 +534,23 @@ body {
 .fk-text-center { text-align: center; }
 .fk-text-left { text-align: left; }
 .fk-text-right { text-align: right; }
+
+/* Visibility utilities */
+.fk-visible { visibility: visible !important; }
+.fk-hidden { visibility: hidden !important; }
+.fk-opacity-0 { opacity: 0 !important; }
+.fk-opacity-1 { opacity: 1 !important; }
+
+/* Position utilities */
+.fk-relative { position: relative; }
+.fk-absolute { position: absolute; }
+.fk-fixed { position: fixed; }
+.fk-sticky { position: sticky; }
+
+/* Overflow utilities */
+.fk-overflow-hidden { overflow: hidden; }
+.fk-overflow-auto { overflow: auto; }
+.fk-overflow-visible { overflow: visible; }
 
 /* Flex utilities */
 .fk-flex { display: flex; }
@@ -611,5 +667,50 @@ body {
     
     body {
         background: white;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Focus styles for accessibility */
+.fk-btn:focus,
+.fk-input:focus,
+.fk-navbar-link:focus,
+.fk-modal-close:focus {
+    outline: 2px solid var(--fk-primary);
+    outline-offset: 2px;
+}
+
+/* Skip link for keyboard navigation */
+.fk-skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--fk-primary);
+    color: white;
+    padding: 8px 16px;
+    z-index: 9999;
+    transition: top 0.3s;
+}
+
+.fk-skip-link:focus {
+    top: 0;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .fk-float,
+    .fk-pulse {
+        animation: none;
     }
 }

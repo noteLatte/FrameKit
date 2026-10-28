@@ -6,84 +6,45 @@
     <meta name="description" content="FrameKit Liquid Glass - Apple-inspired Glassmorphism UI Framework">
     <title>FrameKit Liquid Glass</title>
     
-    <!-- ========================================
-         PRECONNECT FOR FASTER LOADING
-         ======================================== -->
-    <!-- FrameKit CSS Preconnect -->
-    <link rel="preconnect" href="src/css/framekit.a5.css" crossorigin>
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="dist/framekit.a5.css" crossorigin>
+    <link rel="preconnect" href="dist/framekit.a5.js" crossorigin>
     
-    <!-- FrameKit JS Preconnect -->
-    <link rel="preconnect" href="src/js/framekit.a5.js" crossorigin>
-    
-    <!-- Load FrameKit CSS -->
-    <link rel="stylesheet" href="src/css/framekit.a5.css">
+    <!-- FrameKit CSS -->
+    <link rel="stylesheet" href="dist/framekit.a5.css">
     
     <style>
-        /* Demo-specific styles */
         body {
             min-height: 100vh;
             padding: 0;
             margin: 0;
         }
-        
-        .demo-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 24px;
         }
-        
-        .demo-section {
-            margin-bottom: 48px;
-        }
-        
-        .demo-section h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 24px;
-            color: rgba(0, 0, 0, 0.8);
-        }
-        
-        .demo-grid {
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
             margin-top: 24px;
         }
-        
-        .demo-card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        h2 {
+            margin: 48px 0 24px;
+            font-size: 24px;
         }
-        
-        .demo-code {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 8px;
-            padding: 16px;
-            font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 13px;
-            overflow-x: auto;
-            margin-top: 16px;
-        }
-        
-        .demo-code code {
-            color: #333;
-        }
-        
         .theme-toggle {
             position: fixed;
             bottom: 24px;
             right: 24px;
             z-index: 1000;
         }
-        
         .hero {
             text-align: center;
             padding: 80px 24px;
             background: linear-gradient(135deg, rgba(0, 150, 255, 0.1) 0%, rgba(0, 200, 255, 0.05) 100%);
         }
-        
         .hero h1 {
             font-size: 48px;
             font-weight: 800;
@@ -93,79 +54,72 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .hero p {
             font-size: 18px;
             opacity: 0.7;
             max-width: 600px;
             margin: 0 auto 32px;
         }
-        
         .hero-buttons {
             display: flex;
             gap: 16px;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
-        .getting-started {
+        .info-box {
             background: white;
-            border-radius: 24px;
-            padding: 48px;
-            margin: 48px 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-        }
-        
-        .getting-started h2 {
+            border-radius: 16px;
+            padding: 24px;
             margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
-        
-        .getting-started ol {
-            padding-left: 24px;
+        .info-box h3 {
+            margin-bottom: 12px;
+            color: #333;
         }
-        
-        .getting-started li {
-            margin-bottom: 16px;
-            font-size: 16px;
-        }
-        
-        .getting-started code {
+        .info-box code {
             background: rgba(0, 0, 0, 0.05);
             padding: 4px 8px;
             border-radius: 4px;
             font-family: 'Monaco', 'Menlo', monospace;
             font-size: 14px;
         }
-        
+        .demo-code {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin-top: 16px;
+        }
+        .demo-code code {
+            color: #333;
+        }
         footer {
             text-align: center;
             padding: 48px 24px;
             opacity: 0.6;
             font-size: 14px;
         }
-        
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 32px;
             }
-            
             .hero p {
                 font-size: 16px;
             }
-            
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
-            }
-            
-            .getting-started {
-                padding: 24px;
-                margin: 24px 16px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="fk-skip-link">Skip to main content</a>
+    
     <!-- Navbar -->
     <nav class="fk-navbar">
         <a href="#" class="fk-navbar-brand">
@@ -186,146 +140,139 @@
         <p class="fk-slide-up">Apple-inspired Glassmorphism UI Framework for modern web applications</p>
         <div class="hero-buttons fk-slide-up">
             <a href="#getting-started" class="fk-btn fk-btn-primary">Get Started</a>
-            <button class="fk-btn fk-btn-glass" onclick="showDocs()">Documentation</button>
+            <button class="fk-btn fk-btn-glass">Documentation</button>
         </div>
     </section>
 
-    <!-- Getting Started Section -->
-    <section id="getting-started" class="getting-started fk-scale-in">
-        <h2>Getting Started</h2>
-        <p>FrameKit is a pure CSS & JavaScript UI framework. No dependencies required!</p>
-        
-        <ol>
-            <li>
-                <strong>Add FrameKit to your HTML:</strong><br>
-                <code>&lt;link rel="stylesheet" href="framekit.a5.css"&gt;</code><br>
-                <code>&lt;script src="framekit.a5.js"&gt;&lt;/script&gt;</code>
-            </li>
-            <li>
-                <strong>For faster loading, add preconnect:</strong><br>
-                <code>&lt;link rel="preconnect" href="framekit.a5.css" crossorigin&gt;</code><br>
-                <code>&lt;link rel="preconnect" href="framekit.a5.js" crossorigin&gt;</code>
-            </li>
-            <li>
-                <strong>Start using FrameKit classes:</strong><br>
-                <code>&lt;button class="fk-btn fk-btn-primary"&gt;Click Me&lt;/button&gt;</code>
-            </li>
-        </ol>
-    </section>
+    <main id="main-content" class="container">
+        <!-- Getting Started Section -->
+        <section id="getting-started" class="info-box fk-scale-in">
+            <h2>Getting Started</h2>
+            <p>FrameKit is a pure CSS & JavaScript UI framework. No dependencies required!</p>
+            
+            <ol>
+                <li>
+                    <strong>Add FrameKit to your HTML:</strong><br>
+                    <code>&lt;link rel="stylesheet" href="dist/framekit.a5.css"&gt;</code><br>
+                    <code>&lt;script src="dist/framekit.a5.js"&gt;&lt;/script&gt;</code>
+                </li>
+                <li>
+                    <strong>For faster loading, add preconnect:</strong><br>
+                    <code>&lt;link rel="preconnect" href="dist/framekit.a5.css" crossorigin&gt;</code><br>
+                    <code>&lt;link rel="preconnect" href="dist/framekit.a5.js" crossorigin&gt;</code>
+                </li>
+                <li>
+                    <strong>Start using FrameKit classes:</strong><br>
+                    <code>&lt;button class="fk-btn fk-btn-primary"&gt;Click Me&lt;/button&gt;</code>
+                </li>
+            </ol>
+        </section>
 
-    <!-- Components Demo Section -->
-    <section id="components" class="demo-container">
-        <h2 class="fk-slide-down">Components</h2>
-        
-        <div class="demo-grid">
-            <!-- Glass Card -->
-            <div class="demo-card fk-fade-in">
-                <h3>Glass Card</h3>
-                <p>Beautiful glassmorphism card with blur effect</p>
-                <div class="fk-card" style="margin-top: 16px;">
-                    <h4 class="fk-card-title">Card Title</h4>
-                    <p class="fk-card-subtitle">Subtitle</p>
-                    <p class="fk-card-content">This is a beautiful glass card with blur effects and subtle shadows.</p>
-                </div>
-                <div class="demo-code">
-                    <code>&lt;div class="fk-card"&gt;
+        <!-- Components Demo Section -->
+        <section id="components">
+            <h2 class="fk-slide-down">Components</h2>
+            
+            <div class="grid">
+                <div class="info-box fk-fade-in">
+                    <h3>Glass Card</h3>
+                    <p>Beautiful glassmorphism card with blur effect</p>
+                    <div class="fk-card" style="margin-top: 16px;">
+                        <h4 class="fk-card-title">Card Title</h4>
+                        <p class="fk-card-subtitle">Subtitle</p>
+                        <p class="fk-card-content">This is a beautiful glass card with blur effects and subtle shadows.</p>
+                    </div>
+                    <div class="demo-code">
+                        <code>&lt;div class="fk-card"&gt;
   &lt;h3 class="fk-card-title"&gt;Title&lt;/h3&gt;
   &lt;p class="fk-card-content"&gt;Content&lt;/p&gt;
 &lt;/div&gt;</code>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Buttons -->
-            <div class="demo-card fk-fade-in">
-                <h3>Buttons</h3>
-                <p>Various button styles with ripple effect</p>
-                <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
-                    <button class="fk-btn fk-btn-primary">Primary</button>
-                    <button class="fk-btn fk-btn-glass">Glass</button>
-                    <button class="fk-btn fk-btn-dark">Dark</button>
-                </div>
-                <div class="demo-code">
-                    <code>&lt;button class="fk-btn fk-btn-primary"&gt;Primary&lt;/button&gt;
+                
+                <div class="info-box fk-fade-in">
+                    <h3>Buttons</h3>
+                    <p>Various button styles with ripple effect</p>
+                    <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+                        <button class="fk-btn fk-btn-primary">Primary</button>
+                        <button class="fk-btn fk-btn-glass">Glass</button>
+                        <button class="fk-btn fk-btn-dark">Dark</button>
+                    </div>
+                    <div class="demo-code">
+                        <code>&lt;button class="fk-btn fk-btn-primary"&gt;Primary&lt;/button&gt;
 &lt;button class="fk-btn fk-btn-glass"&gt;Glass&lt;/button&gt;
 &lt;button class="fk-btn fk-btn-dark"&gt;Dark&lt;/button&gt;</code>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Input -->
-            <div class="demo-card fk-fade-in">
-                <h3>Input Field</h3>
-                <p>Glassmorphism input with focus effects</p>
-                <div style="margin-top: 16px;">
-                    <label class="fk-input-label">Email Address</label>
-                    <input type="email" class="fk-input" placeholder="Enter your email">
-                </div>
-                <div class="demo-code">
-                    <code>&lt;label class="fk-input-label"&gt;Email&lt;/label&gt;
+                
+                <div class="info-box fk-fade-in">
+                    <h3>Input Field</h3>
+                    <p>Glassmorphism input with focus effects</p>
+                    <div style="margin-top: 16px;">
+                        <label class="fk-input-label">Email Address</label>
+                        <input type="email" class="fk-input" placeholder="Enter your email">
+                    </div>
+                    <div class="demo-code">
+                        <code>&lt;label class="fk-input-label"&gt;Email&lt;/label&gt;
 &lt;input type="email" class="fk-input" placeholder="Enter email"&gt;</code>
+                    </div>
+                </div>
+                
+                <div class="info-box fk-fade-in">
+                    <h3>Liquid Effect</h3>
+                    <p>Smooth liquid flow animation</p>
+                    <div class="fk-glass fk-liquid" style="height: 100px; margin-top: 16px;"></div>
+                    <div class="demo-code">
+                        <code>&lt;div class="fk-glass fk-liquid" style="height: 100px;"&gt;&lt;/div&gt;</code>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Animations Demo Section -->
+        <section id="animations">
+            <h2 class="fk-slide-down">Animations</h2>
             
-            <!-- Liquid Effect -->
-            <div class="demo-card fk-fade-in">
-                <h3>Liquid Effect</h3>
-                <p>Smooth liquid flow animation</p>
-                <div class="fk-glass fk-liquid" style="height: 100px; margin-top: 16px;"></div>
-                <div class="demo-code">
-                    <code>&lt;div class="fk-glass fk-liquid" style="height: 100px;"&gt;&lt;/div&gt;</code>
+            <div class="grid">
+                <div class="info-box">
+                    <h3>Fade In</h3>
+                    <p>Smooth fade in animation</p>
+                    <div class="fk-glass fk-fade-in" style="height: 60px; margin-top: 16px;"></div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Slide Up</h3>
+                    <p>Element slides up into view</p>
+                    <div class="fk-glass fk-slide-up" style="height: 60px; margin-top: 16px;"></div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Scale In</h3>
+                    <p>Element scales up into view</p>
+                    <div class="fk-glass fk-scale-in" style="height: 60px; margin-top: 16px;"></div>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Float</h3>
+                    <p>Gentle floating animation</p>
+                    <div class="fk-glass fk-float" style="height: 60px; margin-top: 16px;"></div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Animations Demo Section -->
-    <section id="animations" class="demo-container">
-        <h2 class="fk-slide-down">Animations</h2>
-        
-        <div class="demo-grid">
-            <div class="demo-card">
-                <h3>Fade In</h3>
-                <p>Smooth fade in animation</p>
-                <button class="fk-btn fk-btn-primary" onclick="toggleAnimation(this, 'fk-fade-in')" style="margin-top: 16px;">Animate</button>
-                <div class="fk-glass" style="height: 60px; margin-top: 16px; display: none;" data-animation-target="fade-in"></div>
+        <!-- Theme Section -->
+        <section id="theme">
+            <h2 class="fk-slide-down">Theme System</h2>
+            <p>Automatic theme detection with light/dark mode support</p>
+            
+            <div style="display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap;">
+                <button class="fk-btn fk-btn-primary" onclick="FrameKit.theme.setTheme('light')">Light Theme</button>
+                <button class="fk-btn fk-btn-dark" onclick="FrameKit.theme.setTheme('dark')">Dark Theme</button>
+                <button class="fk-btn fk-btn-glass" onclick="FrameKit.theme.toggle()">Toggle Theme</button>
+                <button class="fk-btn fk-btn-glass" onclick="FrameKit.theme.setTheme('auto')">Auto Detect</button>
             </div>
             
-            <div class="demo-card">
-                <h3>Slide Up</h3>
-                <p>Element slides up into view</p>
-                <button class="fk-btn fk-btn-primary" onclick="toggleAnimation(this, 'fk-slide-up')" style="margin-top: 16px;">Animate</button>
-                <div class="fk-glass" style="height: 60px; margin-top: 16px; display: none;" data-animation-target="slide-up"></div>
-            </div>
-            
-            <div class="demo-card">
-                <h3>Scale In</h3>
-                <p>Element scales up into view</p>
-                <button class="fk-btn fk-btn-primary" onclick="toggleAnimation(this, 'fk-scale-in')" style="margin-top: 16px;">Animate</button>
-                <div class="fk-glass" style="height: 60px; margin-top: 16px; display: none;" data-animation-target="scale-in"></div>
-            </div>
-            
-            <div class="demo-card">
-                <h3>Float</h3>
-                <p>Gentle floating animation</p>
-                <button class="fk-btn fk-btn-primary" onclick="toggleAnimation(this, 'fk-float')" style="margin-top: 16px;">Animate</button>
-                <div class="fk-glass fk-float" style="height: 60px; margin-top: 16px; display: none;" data-animation-target="float"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Theme Section -->
-    <section id="theme" class="demo-container">
-        <h2 class="fk-slide-down">Theme System</h2>
-        <p>Automatic theme detection with light/dark mode support</p>
-        
-        <div style="display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap;">
-            <button class="fk-btn fk-btn-primary" onclick="FrameKit.theme.setTheme('light')">Light Theme</button>
-            <button class="fk-btn fk-btn-dark" onclick="FrameKit.theme.setTheme('dark')">Dark Theme</button>
-            <button class="fk-btn fk-btn-glass" onclick="FrameKit.theme.toggle()">Toggle Theme</button>
-            <button class="fk-btn fk-btn-glass" onclick="FrameKit.theme.setTheme('auto')">Auto Detect</button>
-        </div>
-        
-        <div class="demo-code" style="margin-top: 24px;">
-            <code>// Set theme programmatically
+            <div class="demo-code" style="margin-top: 24px;">
+                <code>// Set theme programmatically
 FrameKit.theme.setTheme('dark');
 
 // Toggle between light and dark
@@ -333,25 +280,25 @@ FrameKit.theme.toggle();
 
 // Get current theme
 const currentTheme = FrameKit.theme.get();</code>
-        </div>
-    </section>
-
-    <!-- Modal Demo -->
-    <section class="demo-container">
-        <h2 class="fk-slide-down">Modal Dialog</h2>
-        <button class="fk-btn fk-btn-primary" data-fk-modal="demo-modal">Open Modal</button>
-        
-        <div id="demo-modal" class="fk-modal-overlay">
-            <div class="fk-modal">
-                <button class="fk-modal-close">&times;</button>
-                <h2>Modal Title</h2>
-                <p>This is a FrameKit modal dialog with glassmorphism effects.</p>
-                <p style="margin-top: 16px; opacity: 0.7;">Click outside or press ESC to close.</p>
             </div>
-        </div>
-        
-        <div class="demo-code" style="margin-top: 24px;">
-            <code>&lt;button data-fk-modal="my-modal"&gt;Open Modal&lt;/button&gt;
+        </section>
+
+        <!-- Modal Demo -->
+        <section>
+            <h2 class="fk-slide-down">Modal Dialog</h2>
+            <button class="fk-btn fk-btn-primary" data-fk-modal="demo-modal">Open Modal</button>
+            
+            <div id="demo-modal" class="fk-modal-overlay">
+                <div class="fk-modal">
+                    <button class="fk-modal-close" aria-label="Close modal">&times;</button>
+                    <h2>Modal Title</h2>
+                    <p>This is a FrameKit modal dialog with glassmorphism effects.</p>
+                    <p style="margin-top: 16px; opacity: 0.7;">Click outside or press ESC to close.</p>
+                </div>
+            </div>
+            
+            <div class="demo-code" style="margin-top: 24px;">
+                <code>&lt;button data-fk-modal="my-modal"&gt;Open Modal&lt;/button&gt;
 
 &lt;div id="my-modal" class="fk-modal-overlay"&gt;
   &lt;div class="fk-modal"&gt;
@@ -360,32 +307,32 @@ const currentTheme = FrameKit.theme.get();</code>
     &lt;p&gt;Modal content&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code>
-        </div>
-    </section>
+            </div>
+        </section>
+    </main>
 
     <!-- Theme Toggle Button -->
-    <button class="theme-toggle fk-btn fk-btn-glass fk-pulse" onclick="FrameKit.theme.toggle()" title="Toggle Theme">
+    <button class="theme-toggle fk-btn fk-btn-glass fk-pulse" onclick="FrameKit.theme.toggle()" title="Toggle Theme" aria-label="Toggle theme">
         <span id="theme-icon">🌙</span>
     </button>
 
     <!-- Footer -->
     <footer>
-        <p>FrameKit Liquid Glass v1.0.0 | Pure CSS & JavaScript UI Framework</p>
+        <p>FrameKit Liquid Glass v1.1.0 | Pure CSS & JavaScript UI Framework</p>
         <p style="margin-top: 8px;">
-            <a href="#" style="color: #0096ff; text-decoration: none;" onclick="showDocs()">Documentation</a> |
             <a href="https://github.com/noteLatte/FrameKit" style="color: #0096ff; text-decoration: none;" target="_blank">GitHub</a>
         </p>
     </footer>
 
-    <!-- Load FrameKit JS -->
-    <script src="src/js/framekit.a5.js"></script>
+    <!-- FrameKit JS -->
+    <script src="dist/framekit.a5.js"></script>
     
-    <!-- Demo-specific JavaScript -->
+    <!-- Theme icon update -->
     <script>
         // Update theme icon
         function updateThemeIcon() {
             const icon = document.getElementById('theme-icon');
-            if (FrameKit.theme.isDark()) {
+            if (FrameKit && FrameKit.theme && FrameKit.theme.isDark()) {
                 icon.textContent = '☀️';
             } else {
                 icon.textContent = '🌙';
@@ -396,38 +343,13 @@ const currentTheme = FrameKit.theme.get();</code>
         document.addEventListener('framekit:theme-change', updateThemeIcon);
         
         // Initialize theme icon
-        updateThemeIcon();
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(updateThemeIcon, 100);
+        });
         
-        // Animation toggle function
-        function toggleAnimation(button, animationClass) {
-            const target = button.nextElementSibling;
-            
-            if (target.style.display === 'none' || !target.style.display) {
-                target.style.display = 'block';
-                target.classList.add(animationClass);
-                button.textContent = 'Reset';
-                
-                // Remove animation class after animation completes
-                target.addEventListener('animationend', function handler() {
-                    target.classList.remove(animationClass);
-                    target.removeEventListener('animationend', handler);
-                }, { once: true });
-            } else {
-                target.style.display = 'none';
-                target.classList.remove(animationClass);
-                button.textContent = 'Animate';
-            }
-        }
-        
-        // Show documentation
-        function showDocs() {
-            alert('FrameKit Documentation\n\n' +
-                  '1. Add CSS: <link rel="stylesheet" href="framekit.a5.css">\n' +
-                  '2. Add JS: <script src="framekit.a5.js"></script>\n' +
-                  '3. Use classes: class="fk-btn fk-btn-primary"\n\n' +
-                  'For faster loading:\n' +
-                  '<link rel="preconnect" href="framekit.a5.css" crossorigin>\n' +
-                  '<link rel="preconnect" href="framekit.a5.js" crossorigin>');
+        // Fallback for direct function calls
+        if (typeof FrameKit !== 'undefined') {
+            setTimeout(updateThemeIcon, 100);
         }
         
         // Smooth scroll for anchor links

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrameKit Liquid Glass Example</title>
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="dist/framekit.a5.css" crossorigin>
+    <link rel="preconnect" href="dist/framekit.a5.js" crossorigin>
+    
+    <!-- FrameKit CSS -->
+    <link rel="stylesheet" href="dist/framekit.a5.css">
+    
+    <style>
+        body {
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+        h2 {
+            margin: 48px 0 24px;
+            font-size: 24px;
+        }
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+        .info-box {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .info-box h3 {
+            margin-bottom: 12px;
+            color: #333;
+        }
+        .info-box code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="fk-skip-link">Skip to main content</a>
+    
+    <!-- Navbar -->
+    <nav class="fk-navbar">
+        <a href="#" class="fk-navbar-brand">
+            <span style="color: #0096ff; font-size: 20px;">▲</span>
+            FrameKit
+        </a>
+        <ul class="fk-navbar-menu">
+            <li><a href="#components" class="fk-navbar-link">Components</a></li>
+            <li><a href="#animations" class="fk-navbar-link">Animations</a></li>
+            <li><a href="#theme" class="fk-navbar-link">Theme</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content" class="container" style="padding-top: 80px;">
+        <!-- Hero Section -->
+        <div class="info-box fk-fade-in">
+            <h1 style="font-size: 32px; margin-bottom: 16px; color: #333;">FrameKit Liquid Glass v1.1.0</h1>
+            <p style="font-size: 16px; color: #666; line-height: 1.6;">
+                Apple-inspired Glassmorphism UI Framework for the web. Pure CSS & JavaScript - No dependencies required!
+            </p>
+        </div>
+
+        <!-- Glass Cards -->
+        <h2 id="components">Glass Cards</h2>
+        <div class="grid">
+            <div class="fk-card fk-fade-in">
+                <h3 class="fk-card-title">Default Glass Card</h3>
+                <p class="fk-card-subtitle">Standard glass effect</p>
+                <p class="fk-card-content">Beautiful glassmorphism with blur and shadow effects. Hover to see the liquid reflection.</p>
+            </div>
+            <div class="fk-card fk-glass-light fk-slide-up">
+                <h3 class="fk-card-title">Light Glass</h3>
+                <p class="fk-card-subtitle">More transparent</p>
+                <p class="fk-card-content">Lighter glass effect for subtle UI elements.</p>
+            </div>
+            <div class="fk-card fk-glass-dark fk-slide-up">
+                <h3 class="fk-card-title">Dark Glass</h3>
+                <p class="fk-card-subtitle">Darker variant</p>
+                <p class="fk-card-content">Darker glass for better contrast with light content.</p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <h2>Buttons</h2>
+        <div class="grid">
+            <div class="info-box">
+                <h3>Button Variants</h3>
+                <p>Try clicking these buttons to see the ripple effect!</p>
+                <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+                    <button class="fk-btn fk-btn-primary">Primary</button>
+                    <button class="fk-btn fk-btn-glass">Glass</button>
+                    <button class="fk-btn fk-btn-dark">Dark</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Forms -->
+        <h2>Input Forms</h2>
+        <div class="grid">
+            <div class="info-box">
+                <h3>Form Elements</h3>
+                <p>Glassmorphism input fields with focus effects.</p>
+                <div style="margin-top: 16px;">
+                    <label class="fk-input-label">Email Address</label>
+                    <input type="email" class="fk-input" placeholder="Enter your email">
+                </div>
+                <div style="margin-top: 16px;">
+                    <label class="fk-input-label">Password</label>
+                    <input type="password" class="fk-input" placeholder="Enter password">
+                </div>
+            </div>
+        </div>
+
+        <!-- Liquid Effect -->
+        <h2>Liquid Effect</h2>
+        <div class="grid">
+            <div class="info-box">
+                <h3>Liquid Glass</h3>
+                <p>Dynamic liquid flow animation effect.</p>
+                <div class="fk-glass fk-liquid" style="height: 120px; border-radius: 16px; margin-top: 16px;"></div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <h2>Modal Dialog</h2>
+        <div class="grid">
+            <div class="info-box">
+                <h3>Modal Example</h3>
+                <p>Click the button below to open a modal dialog.</p>
+                <button class="fk-btn fk-btn-primary" data-fk-modal="example-modal" style="margin-top: 16px;">Open Modal</button>
+            </div>
+        </div>
+
+        <!-- Animations -->
+        <h2 id="animations">Animations</h2>
+        <div class="grid">
+            <div class="info-box">
+                <h3>Fade In</h3>
+                <p>Elements fade in when they come into view.</p>
+                <div class="fk-glass fk-fade-in" style="height: 60px; margin-top: 16px;"></div>
+            </div>
+            <div class="info-box">
+                <h3>Slide Up</h3>
+                <p>Elements slide up into view.</p>
+                <div class="fk-glass fk-slide-up" style="height: 60px; margin-top: 16px;"></div>
+            </div>
+            <div class="info-box">
+                <h3>Scale In</h3>
+                <p>Elements scale up into view.</p>
+                <div class="fk-glass fk-scale-in" style="height: 60px; margin-top: 16px;"></div>
+            </div>
+            <div class="info-box">
+                <h3>Float</h3>
+                <p>Gentle floating animation.</p>
+                <div class="fk-glass fk-float" style="height: 60px; margin-top: 16px;"></div>
+            </div>
+            <div class="info-box">
+                <h3>Pulse</h3>
+                <p>Pulsing animation effect.</p>
+                <div class="fk-glass fk-pulse" style="height: 60px; margin-top: 16px; border-radius: 50%;"></div>
+            </div>
+        </div>
+
+        <!-- Theme -->
+        <h2 id="theme">Theme System</h2>
+        <div class="grid">
+            <div class="info-box">
+                <h3>Theme Toggle</h3>
+                <p>Toggle between light and dark themes. The preference is saved automatically.</p>
+                <div style="display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+                    <button class="fk-btn fk-btn-primary" onclick="FrameKit.theme.setTheme('light')">Light</button>
+                    <button class="fk-btn fk-btn-dark" onclick="FrameKit.theme.setTheme('dark')">Dark</button>
+                    <button class="fk-btn fk-btn-glass" onclick="FrameKit.theme.toggle()">Toggle</button>
+                    <button class="fk-btn fk-btn-glass" onclick="FrameKit.theme.setTheme('auto')">Auto</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="example-modal" class="fk-modal-overlay">
+        <div class="fk-modal">
+            <button class="fk-modal-close" aria-label="Close modal">&times;</button>
+            <h2>Modal Title</h2>
+            <p>This is a FrameKit modal dialog with glassmorphism effects.</p>
+            <p style="margin-top: 16px; opacity: 0.7;">Click outside or press ESC to close.</p>
+            <div style="margin-top: 24px;">
+                <button class="fk-btn fk-btn-primary" onclick="document.getElementById('example-modal').classList.remove('active'); document.body.style.overflow = '';">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle fk-btn fk-btn-glass fk-pulse" onclick="FrameKit.theme.toggle()" title="Toggle Theme" aria-label="Toggle theme">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <!-- FrameKit JS -->
+    <script src="dist/framekit.a5.js"></script>
+    
+    <!-- Theme icon update -->
+    <script>
+        // Update theme icon
+        function updateThemeIcon() {
+            const icon = document.getElementById('theme-icon');
+            if (FrameKit && FrameKit.theme && FrameKit.theme.isDark()) {
+                icon.textContent = '☀️';
+            } else {
+                icon.textContent = '🌙';
+            }
+        }
+        
+        // Listen for theme changes
+        document.addEventListener('framekit:theme-change', updateThemeIcon);
+        
+        // Initialize theme icon
+        document.addEventListener('DOMContentLoaded', function() {
+            // Small delay to ensure FrameKit is loaded
+            setTimeout(updateThemeIcon, 100);
+        });
+        
+        // Fallback for direct function calls
+        if (typeof FrameKit !== 'undefined') {
+            setTimeout(updateThemeIcon, 100);
+        }
+    </script>
+</body>
+</html>
