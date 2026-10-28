@@ -1,0 +1,615 @@
+/*! FrameKit Liquid Glass v1.0.0 | Apple-inspired Glassmorphism UI Framework */
+/* Pure CSS & JS UI Framework - No dependencies required */
+
+/* ============================================
+   FRAMEKIT LIQUID GLASS - CORE STYLES
+   ============================================ */
+
+:root {
+    /* Liquid Glass Theme Colors */
+    --fk-primary: rgba(0, 150, 255, 0.8);
+    --fk-secondary: rgba(255, 255, 255, 0.9);
+    --fk-accent: rgba(0, 200, 255, 0.6);
+    --fk-dark: rgba(0, 0, 0, 0.8);
+    --fk-glass-bg: rgba(255, 255, 255, 0.15);
+    --fk-glass-border: rgba(255, 255, 255, 0.2);
+    --fk-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    
+    /* Animation & Effects */
+    --fk-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --fk-blur: blur(12px);
+    --fk-reflect-opacity: 0.3;
+    
+    /* Spacing */
+    --fk-radius: 16px;
+    --fk-radius-sm: 8px;
+    --fk-radius-lg: 24px;
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: var(--fk-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   GLASSMORPHISM CORE
+   ============================================ */
+
+.fk-glass {
+    position: relative;
+    background: var(--fk-glass-bg);
+    backdrop-filter: var(--fk-blur);
+    -webkit-backdrop-filter: var(--fk-blur);
+    border: 1px solid var(--fk-glass-border);
+    border-radius: var(--fk-radius);
+    box-shadow: var(--fk-glass-shadow);
+    transition: var(--fk-transition);
+    overflow: hidden;
+}
+
+.fk-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.05) 100%
+    );
+    opacity: var(--fk-reflect-opacity);
+    pointer-events: none;
+}
+
+.fk-glass:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.fk-glass:active {
+    transform: translateY(0);
+}
+
+/* Glass with different intensity levels */
+.fk-glass-light {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.fk-glass-medium {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.fk-glass-dark {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   LIQUID EFFECTS
+   ============================================ */
+
+.fk-liquid {
+    position: relative;
+    overflow: hidden;
+}
+
+.fk-liquid::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(0, 150, 255, 0.1) 0%,
+        rgba(0, 200, 255, 0.1) 25%,
+        rgba(0, 100, 255, 0.05) 50%,
+        transparent 100%
+    );
+    transform: rotate(45deg);
+    pointer-events: none;
+    animation: fk-liquid-flow 8s linear infinite;
+}
+
+@keyframes fk-liquid-flow {
+    0% { transform: rotate(45deg) translate(-20%, -20%); }
+    50% { transform: rotate(45deg) translate(20%, 20%); }
+    100% { transform: rotate(45deg) translate(-20%, -20%); }
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.fk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--fk-secondary);
+    cursor: pointer;
+    border: none;
+    border-radius: var(--fk-radius);
+    transition: var(--fk-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.fk-btn-primary {
+    background: linear-gradient(135deg, var(--fk-primary) 0%, var(--fk-accent) 100%);
+    box-shadow: 0 4px 15px rgba(0, 150, 255, 0.3);
+}
+
+.fk-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 150, 255, 0.4);
+}
+
+.fk-btn-glass {
+    background: var(--fk-glass-bg);
+    backdrop-filter: var(--fk-blur);
+    -webkit-backdrop-filter: var(--fk-blur);
+    border: 1px solid var(--fk-glass-border);
+}
+
+.fk-btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.fk-btn-dark {
+    background: var(--fk-dark);
+    color: var(--fk-secondary);
+}
+
+.fk-btn-dark:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* Button ripple effect */
+.fk-btn .fk-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: fk-ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes fk-ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.fk-card {
+    background: var(--fk-glass-bg);
+    backdrop-filter: var(--fk-blur);
+    -webkit-backdrop-filter: var(--fk-blur);
+    border: 1px solid var(--fk-glass-border);
+    border-radius: var(--fk-radius-lg);
+    padding: 24px;
+    box-shadow: var(--fk-glass-shadow);
+    transition: var(--fk-transition);
+    color: var(--fk-dark);
+}
+
+.fk-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.fk-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--fk-dark);
+}
+
+.fk-card-subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 16px;
+}
+
+.fk-card-content {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+.fk-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--fk-dark);
+    background: var(--fk-glass-bg);
+    backdrop-filter: var(--fk-blur);
+    -webkit-backdrop-filter: var(--fk-blur);
+    border: 1px solid var(--fk-glass-border);
+    border-radius: var(--fk-radius-sm);
+    outline: none;
+    transition: var(--fk-transition);
+}
+
+.fk-input:focus {
+    border-color: var(--fk-primary);
+    box-shadow: 0 0 0 3px rgba(0, 150, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.fk-input::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.fk-input-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.fk-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--fk-glass-bg);
+    backdrop-filter: var(--fk-blur);
+    -webkit-backdrop-filter: var(--fk-blur);
+    border-bottom: 1px solid var(--fk-glass-border);
+}
+
+.fk-navbar-brand {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--fk-dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fk-navbar-menu {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+}
+
+.fk-navbar-link {
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: var(--fk-transition);
+}
+
+.fk-navbar-link:hover {
+    color: var(--fk-dark);
+}
+
+.fk-navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--fk-primary);
+    transition: var(--fk-transition);
+}
+
+.fk-navbar-link:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   MODALS & DIALOGS
+   ============================================ */
+
+.fk-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--fk-transition);
+}
+
+.fk-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fk-modal {
+    background: var(--fk-glass-bg);
+    backdrop-filter: var(--fk-blur);
+    -webkit-backdrop-filter: var(--fk-blur);
+    border: 1px solid var(--fk-glass-border);
+    border-radius: var(--fk-radius-lg);
+    padding: 32px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: var(--fk-transition);
+}
+
+.fk-modal-overlay.active .fk-modal {
+    transform: scale(1);
+}
+
+.fk-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.4);
+    transition: var(--fk-transition);
+    padding: 4px;
+    line-height: 1;
+}
+
+.fk-modal-close:hover {
+    color: var(--fk-dark);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Fade in */
+.fk-fade-in {
+    opacity: 0;
+    animation: fk-fade-in 0.4s ease-out forwards;
+}
+
+@keyframes fk-fade-in {
+    to { opacity: 1; }
+}
+
+/* Slide up */
+.fk-slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fk-slide-up 0.4s ease-out forwards;
+}
+
+@keyframes fk-slide-up {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide down */
+.fk-slide-down {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fk-slide-down 0.4s ease-out forwards;
+}
+
+@keyframes fk-slide-down {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scale in */
+.fk-scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fk-scale-in 0.3s ease-out forwards;
+}
+
+@keyframes fk-scale-in {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Pulse animation */
+.fk-pulse {
+    animation: fk-pulse 2s ease-in-out infinite;
+}
+
+@keyframes fk-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Float animation */
+.fk-float {
+    animation: fk-float 3s ease-in-out infinite;
+}
+
+@keyframes fk-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+/* Text utilities */
+.fk-text-primary { color: var(--fk-primary); }
+.fk-text-secondary { color: rgba(0, 0, 0, 0.6); }
+.fk-text-center { text-align: center; }
+.fk-text-left { text-align: left; }
+.fk-text-right { text-align: right; }
+
+/* Flex utilities */
+.fk-flex { display: flex; }
+.fk-flex-center { display: flex; align-items: center; justify-content: center; }
+.fk-flex-between { display: flex; align-items: center; justify-content: space-between; }
+.fk-flex-column { display: flex; flex-direction: column; }
+
+/* Spacing utilities */
+.fk-m-0 { margin: 0; }
+.fk-m-1 { margin: 4px; }
+.fk-m-2 { margin: 8px; }
+.fk-m-3 { margin: 12px; }
+.fk-m-4 { margin: 16px; }
+.fk-m-5 { margin: 24px; }
+.fk-m-6 { margin: 32px; }
+
+.fk-p-0 { padding: 0; }
+.fk-p-1 { padding: 4px; }
+.fk-p-2 { padding: 8px; }
+.fk-p-3 { padding: 12px; }
+.fk-p-4 { padding: 16px; }
+.fk-p-5 { padding: 24px; }
+.fk-p-6 { padding: 32px; }
+
+/* Size utilities */
+.fk-w-full { width: 100%; }
+.fk-w-auto { width: auto; }
+.fk-h-full { height: 100%; }
+.fk-h-auto { height: auto; }
+
+/* Border utilities */
+.fk-rounded { border-radius: var(--fk-radius); }
+.fk-rounded-sm { border-radius: var(--fk-radius-sm); }
+.fk-rounded-lg { border-radius: var(--fk-radius-lg); }
+.fk-rounded-full { border-radius: 50%; }
+
+/* Shadow utilities */
+.fk-shadow { box-shadow: var(--fk-glass-shadow); }
+.fk-shadow-lg { box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12); }
+.fk-shadow-xl { box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15); }
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .fk-navbar {
+        padding: 12px 16px;
+    }
+    
+    .fk-navbar-menu {
+        display: none;
+    }
+    
+    .fk-card {
+        padding: 16px;
+    }
+    
+    .fk-modal {
+        padding: 20px;
+        margin: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .fk-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .fk-input {
+        padding: 12px 14px;
+    }
+}
+
+/* ============================================
+   THEME VARIATIONS
+   ============================================ */
+
+/* Dark theme */
+[data-theme="dark"] {
+    --fk-primary: rgba(0, 150, 255, 0.9);
+    --fk-secondary: rgba(255, 255, 255, 0.95);
+    --fk-dark: rgba(255, 255, 255, 0.9);
+    --fk-glass-bg: rgba(0, 0, 0, 0.2);
+    --fk-glass-border: rgba(255, 255, 255, 0.1);
+    --fk-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme */
+[data-theme="light"] {
+    --fk-primary: rgba(0, 150, 255, 0.8);
+    --fk-secondary: rgba(255, 255, 255, 0.9);
+    --fk-dark: rgba(0, 0, 0, 0.8);
+    --fk-glass-bg: rgba(255, 255, 255, 0.15);
+    --fk-glass-border: rgba(255, 255, 255, 0.2);
+    --fk-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .fk-glass,
+    .fk-navbar,
+    .fk-modal-overlay {
+        display: none !important;
+    }
+    
+    body {
+        background: white;
+    }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "framekit-liquid-glass",
+  "version": "1.0.0",
+  "description": "Apple-inspired Glassmorphism UI Framework - Pure CSS & JavaScript",
+  "main": "dist/framekit.a5.js",
+  "style": "dist/framekit.a5.css",
+  "scripts": {
+    "build": "node build.js",
+    "build:css": "cp src/css/framekit.a5.css dist/framekit.a5.css",
+    "build:js": "cp src/js/framekit.a5.js dist/framekit.a5.js",
+    "build:min": "npm run build:css:min && npm run build:js:min",
+    "build:css:min": "cleancss -o dist/framekit.a5.min.css src/css/framekit.a5.css",
+    "build:js:min": "uglifyjs src/js/framekit.a5.js -o dist/framekit.a5.min.js -c -m",
+    "watch": "nodemon --watch src --ext css,js --exec \"npm run build\"",
+    "serve": "npx serve .",
+    "docs": "npx http-server . -p 8080 -c-1",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "ui",
+    "framework",
+    "css",
+    "javascript",
+    "glassmorphism",
+    "liquid-glass",
+    "apple",
+    "design",
+    "frontend",
+    "web",
+    "components",
+    "animation"
+  ],
+  "author": "noteLatte",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noteLatte/FrameKit.git"
+  },
+  "homepage": "https://github.com/noteLatte/FrameKit#readme",
+  "bugs": {
+    "url": "https://github.com/noteLatte/FrameKit/issues"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "clean-css-cli": "^5.6.2",
+    "uglify-js": "^3.17.4",
+    "http-server": "^14.1.1",
+    "serve": "^14.2.1"
+  },
+  "files": [
+    "dist",
+    "src",
+    "index.html",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/framekit.a5.js",
+      "require": "./dist/framekit.a5.js"
+    },
+    "./css": "./dist/framekit.a5.css",
+    "./js": "./dist/framekit.a5.js"
+  }
+}
