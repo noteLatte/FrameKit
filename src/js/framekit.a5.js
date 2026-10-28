@@ -1,12 +1,13 @@
 /**
- * FrameKit Liquid Glass v1.1.0
+ * FrameKit Liquid Glass v1.2.0
  * Apple-inspired Glassmorphism UI Framework
  * Pure JavaScript & CSS - No dependencies required
  * 
  * Usage: Add <script src="framekit.a5.js"></script> to your HTML
- * Recommended: Add <link rel="preconnect" href="path/to/framekit.a5.js"> for faster loading
+ * The CSS will be automatically loaded from GitHub CDN
  * 
  * GitHub: https://github.com/noteLatte/FrameKit
+ * CDN: https://cdn.jsdelivr.net/gh/noteLatte/FrameKit@main/framekit.a5.css
  */
 
 ;(function(global, factory) {
@@ -15,6 +16,40 @@
     // Check if FrameKit is already loaded
     if (typeof global.FrameKit !== 'undefined' && global.FrameKit._initialized) {
         return;
+    }
+    
+    // Auto-load CSS if not already loaded
+    function loadCSS() {
+        // Check if CSS is already loaded
+        const cssLoaded = document.querySelector('link[href*="framekit.a5.css"], style[data-fk-css]');
+        if (cssLoaded) return;
+        
+        // Create link element for CSS
+        const cssUrl = 'https://cdn.jsdelivr.net/gh/noteLatte/FrameKit@main/framekit.a5.css';
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = cssUrl;
+        link.crossOrigin = 'anonymous';
+        link.onload = function() {
+            console.log('%cFrameKit CSS loaded from CDN', 'color: #0096ff;');
+        };
+        link.onerror = function() {
+            console.warn('%cFrameKit: Could not load CSS from CDN, trying local fallback', 'color: #ff9800;');
+            // Fallback: try to load from same directory as JS
+            const localLink = document.createElement('link');
+            localLink.rel = 'stylesheet';
+            localLink.href = 'framekit.a5.css';
+            document.head.appendChild(localLink);
+        };
+        
+        document.head.appendChild(link);
+    }
+    
+    // Load CSS immediately
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadCSS);
+    } else {
+        loadCSS();
     }
     
     // Universal Module Definition (UMD)
